@@ -7,15 +7,16 @@ import java.util.Scanner;
 /// @brief This program simulates the motion of a bouncing ball in a vacuum.
 public class BallSimulation {
   public static void main(String args[]) {
-    if(args.length != 1) {
+    if(args.length != 2) {
       System.out.println("Usage: java BallSimulation <file>");
       System.exit(1);
     }
+    int N = Integer.parseInt(args[2]);
 
     // Make a simulator on the parameters and simulate
     try {
       Scanner s = new Scanner(new File(args[0]));
-      Simulator simulator = new Simulator(s);
+      Simulator simulator = new Simulator(s, n);
       simulator.simulate();
       System.exit(0);
     }

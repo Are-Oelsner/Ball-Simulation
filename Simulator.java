@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Simulator {
 
   private double timeStep; /// Timestep - time passed in virtual world per frame
-  private Ball ball;       /// Ball to simulate
+  private Ball[] ball;       /// Ball to simulate
   private Vector gravity;  /// Gravity force
   private Vector wind;     /// Wind force
 
@@ -16,7 +16,7 @@ public class Simulator {
 
   /// @brief Constructor from Scanner
   /// @param s Scanner
-  public Simulator(Scanner s) {
+  public Simulator(Scanner s, int N) {
     while(s.hasNextLine()) {
       String line = s.nextLine();
       Scanner l = new Scanner(line);
@@ -36,7 +36,10 @@ public class Simulator {
           break;
         case "Ball":
           System.out.println("Reading agent");
-          ball = new Ball(s);
+          ball = new Ball[N];
+          for(int i = 0; i < N; i++) {
+                  ball[i] = new Ball();
+          }//s
           break;
         default:
           throw new InputMismatchException("Unknown tag " + tag);
@@ -87,7 +90,7 @@ public class Simulator {
 
   /// @brief Update the position of the ball
   private void update() {
-    if(ball.rest())
+    if(Ball.rest())
       return;
 
     double tr = timeStep;
