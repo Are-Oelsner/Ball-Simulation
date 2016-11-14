@@ -13,7 +13,6 @@ public class Ball {
         private double elasticity; ///< Elasticity constant
         private double friction;   ///< Friction constant
         private boolean rest;      ///< Simulate agent (true)
-        private Ball[] ballarray;
 
         /// @brief Copy constructor
         /// @param a Ball
@@ -73,7 +72,7 @@ public class Ball {
 
         public void genBallArray(int N) {
                 for(int i = 0; i < N; i++) {
-                        ballarray[i] = new Ball();
+                        ball[i] = new Ball();
                 }
         }
 
